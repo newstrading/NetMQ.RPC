@@ -58,18 +58,7 @@ namespace Burrow.RPC
 					string jsonRequest = server.ReceiveFrameString ();
 					Console.WriteLine ("Server Rcvd: {0}", jsonRequest);
 
-					//object JsonDe = JsonConvert.DeserializeObject(Json); 
-					//Console.WriteLine ("Deserialized Type: {0}", JsonDe.GetType ());
-
-					JsonSerializer serializer = new JsonSerializer();
-					serializer.CheckAdditionalContent= false;
-
-					JsonTextReader reader = new JsonTextReader(new StringReader(jsonRequest));
-					reader.SupportMultipleContent = true;
-					reader.CloseInput = false;
-					reader.Read ();
-					//serializer.Deserialize (
-					RpcRequest rpcRequest = serializer.Deserialize<RpcRequest> (reader);
+					RpcRequest rpcRequest = JSON.DeSerializeRequest(  jsonRequest);
 					
 					HandleMessage (rpcRequest);
 				}

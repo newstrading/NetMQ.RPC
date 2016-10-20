@@ -28,7 +28,9 @@ namespace test
 			
 			
 			var programmers = calculator.Programmers ();
-			Console.WriteLine ("Result is: {0}", programmers); 
+			Console.WriteLine ("Programmer Count: {0}", programmers.Count); 
+			
+			calculator.SetProgrammers (programmers);
 			
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);

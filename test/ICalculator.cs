@@ -8,6 +8,8 @@ namespace test
 		double Add (double a, double b);
 		
 		List<User> Programmers ();
+		
+		void SetProgrammers (List<User> programmers);
 	}
 	
 	

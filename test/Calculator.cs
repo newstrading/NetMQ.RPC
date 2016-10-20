@@ -10,8 +10,14 @@ namespace test
 			return a+b;
 		}
 		
+		// Generic Lists are normally not handled well by the NewtonSoft.JSON serializer
+		
 		List<User> ICalculator.Programmers () {
 			return User.Super();
+		}
+		
+		void ICalculator.SetProgrammers (List<User> programmers) {
+			return; 
 		}
 	}
 }
