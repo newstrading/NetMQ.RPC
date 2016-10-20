@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zmqRPC", "zmqRPC\zmqRPC.csproj", "{569AB676-AA12-402D-AAC8-71241227A044}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{307BCE5C-4AD1-485F-9717-B82B889F82D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{569AB676-AA12-402D-AAC8-71241227A044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569AB676-AA12-402D-AAC8-71241227A044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569AB676-AA12-402D-AAC8-71241227A044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569AB676-AA12-402D-AAC8-71241227A044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307BCE5C-4AD1-485F-9717-B82B889F82D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307BCE5C-4AD1-485F-9717-B82B889F82D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307BCE5C-4AD1-485F-9717-B82B889F82D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307BCE5C-4AD1-485F-9717-B82B889F82D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
