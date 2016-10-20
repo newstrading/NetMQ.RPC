@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace test
 {
@@ -8,6 +8,10 @@ namespace test
 	{
 		double ICalculator.Add (double a, double b) {
 			return a+b;
+		}
+		
+		List<User> ICalculator.Programmers () {
+			return User.Super();
 		}
 	}
 }

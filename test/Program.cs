@@ -1,6 +1,7 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
 
+using Newtonsoft.Json;
 using Burrow.RPC;
 
 
@@ -12,6 +13,11 @@ namespace test
 		{
 			Console.WriteLine("Hello World!");
 
+			// Serialize Test
+			string json = JsonConvert.SerializeObject(User.Super());
+			object o  =  JsonConvert.DeserializeObject(json,typeof(List<User>) );
+			Console.WriteLine ("Deserialized type: {0}", o.GetType() );
+			
 			var server = RpcFactory.CreateServer<ICalculator>(new Calculator (), "tcp://127.0.0.1:13777");
 			server.Start();
 			
@@ -19,6 +25,10 @@ namespace test
 			var calculator = RpcFactory.CreateClient<ICalculator>(">tcp://127.0.0.1:13777");			
 			var result = calculator.Add (1,2);
 			Console.WriteLine ("Result is: {0}", result); 
+			
+			
+			var programmers = calculator.Programmers ();
+			Console.WriteLine ("Result is: {0}", programmers); 
 			
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);

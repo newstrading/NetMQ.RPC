@@ -68,6 +68,7 @@ namespace Burrow.RPC
 					reader.SupportMultipleContent = true;
 					reader.CloseInput = false;
 					reader.Read ();
+					//serializer.Deserialize (
 					RpcRequest rpcRequest = serializer.Deserialize<RpcRequest> (reader);
 					
 					HandleMessage (rpcRequest);

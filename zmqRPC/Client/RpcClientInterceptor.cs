@@ -50,8 +50,11 @@ namespace Burrow.RPC
                 MethodName = method.Name,
                 MethodSignature = InternalDependencies.MethodMatcher.GetMethodSignature(method),
                 DeclaringType = method.DeclaringType.FullName,
+                DeclaringAssembly = method.DeclaringType.Assembly.FullName.Substring (0,method.DeclaringType.Assembly.FullName.IndexOf (","))
             };
 
+            
+            
             var timeToLiveAttribute = attributes.LastOrDefault(x => x is RpcTimeToLiveAttribute);
             if (timeToLiveAttribute != null)
             {
@@ -69,7 +72,8 @@ namespace Burrow.RPC
 			string jsonResponse = client.ReceiveFrameString();
 			Console.WriteLine("Client Response Received: {0}", jsonResponse);
 			
-			RpcResponse response =  JsonConvert.DeserializeObject<RpcResponse>(jsonResponse);
+			
+			RpcResponse response =  JSON.DeserializeResponse (request, jsonResponse); //     JsonConvert.DeserializeObject<RpcResponse>(jsonResponse);
 
             
             MapResponseResult(invocation, @params, response);

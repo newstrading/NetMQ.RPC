@@ -26,6 +26,7 @@ namespace Burrow.RPC
         
         public string MethodName { get; set; }
 
+          public string DeclaringAssembly { get; set; }
         public string DeclaringType { get; set; }
 
         public MemberTypes MemberType { get; set; }

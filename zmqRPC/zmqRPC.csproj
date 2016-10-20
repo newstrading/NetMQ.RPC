@@ -69,19 +69,26 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncAttribute.cs" />
-    <Compile Include="BurrowRpcServerCoordinator.cs" />
+    <Compile Include="Attributes\AsyncAttribute.cs" />
+    <Compile Include="Attributes\RpcTimeToLiveAttribute.cs" />
+    <Compile Include="Client\IRpcClientCoordinator.cs" />
+    <Compile Include="Client\RpcClientInterceptor.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IMethodFilter.cs" />
     <Compile Include="InternalDependencies.cs" />
-    <Compile Include="IRpcClientCoordinator.cs" />
-    <Compile Include="IRpcServerCoordinator.cs" />
+    <Compile Include="MessengingTypes\RpcRequest.cs" />
+    <Compile Include="MessengingTypes\RpcResponse.cs" />
     <Compile Include="MethodMatcher.cs" />
-    <Compile Include="RpcClientInterceptor.cs" />
     <Compile Include="RpcFactory.cs" />
-    <Compile Include="RpcRequest.cs" />
-    <Compile Include="RpcResponse.cs" />
-    <Compile Include="RpcTimeToLiveAttribute.cs" />
+    <Compile Include="Serialization.cs" />
+    <Compile Include="Server\BurrowRpcServerCoordinator.cs" />
+    <Compile Include="Server\IRpcServerCoordinator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Client" />
+    <Folder Include="MessengingTypes" />
+    <Folder Include="Attributes" />
+    <Folder Include="Server" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
