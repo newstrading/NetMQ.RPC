@@ -79,8 +79,11 @@
     <Compile Include="MessengingTypes\RpcRequest.cs" />
     <Compile Include="MessengingTypes\RpcResponse.cs" />
     <Compile Include="MethodMatcher.cs" />
+    <Compile Include="PubSub\Publisher.cs" />
+    <Compile Include="PubSub\Subscriber.cs" />
     <Compile Include="RpcFactory.cs" />
-    <Compile Include="Serialization.cs" />
+    <Compile Include="Serialization\ISerializer.cs" />
+    <Compile Include="Serialization\Serialization.cs" />
     <Compile Include="Server\BurrowRpcServerCoordinator.cs" />
     <Compile Include="Server\IRpcServerCoordinator.cs" />
   </ItemGroup>
@@ -88,6 +91,8 @@
     <Folder Include="Client" />
     <Folder Include="MessengingTypes" />
     <Folder Include="Attributes" />
+    <Folder Include="PubSub" />
+    <Folder Include="Serialization" />
     <Folder Include="Server" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
