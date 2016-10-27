@@ -15,7 +15,7 @@ namespace testSub
 			var subscriber = new Subscriber(cs);
 			Console.WriteLine("Subscribing at: " + cs);
 			
-			subscriber.Subscribe ("test", (Bunny b) => {
+			subscriber.Subscribe ("a", (Bunny b) => {
 			                      	Console.WriteLine ("Bunny Received: {0}", b.Age);
 			                      });
 			

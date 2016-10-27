@@ -20,8 +20,7 @@ namespace zmqRPC.PubSub
 		public Subscriber(string connectionStringPublisher)
 		{
 			sub = new SubscriberSocket ( connectionStringPublisher);
-			sub.SubscribeToAnyTopic();
-		
+			//sub.SubscribeToAnyTopic();
 			
 			subThread = new Thread (SubWorker);
 			subThread.Start();

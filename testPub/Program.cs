@@ -38,9 +38,11 @@ namespace testPub
 			Console.ReadKey(true);
 			Console.Clear();
 			
-			for (uint i=0; i<100; i++) {
+			for (uint i=0; i<100; i=i+2) {
 				b.Age = 10 + i;
-				publisher.Publish<Bunny> ("test", b);
+				publisher.Publish<Bunny> ("a", b);
+				b.Age = 11 + i;
+				publisher.Publish<Bunny> ("b", b);
 				Thread.Sleep (1000);
 			}
 			
