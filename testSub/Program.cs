@@ -15,13 +15,23 @@ namespace testSub
 			var subscriber = new Subscriber(cs);
 			Console.WriteLine("Subscribing at: " + cs);
 			
-			subscriber.Subscribe ("a", (Bunny b) => {
-			                      	Console.WriteLine ("Bunny Received: {0}", b.Age);
-			                      });
+			X x = new X ();
+			subscriber.Subscribe<Bunny> ("a", x.print );
+			subscriber.Subscribe<Bunny> ("b", GlobalPrint );
 			
 			Console.Write("Press any key to stop subscribing . . . ");
 			Console.ReadKey(true);
 			subscriber.Stop();
+		}
+		
+		static void GlobalPrint (Bunny b) {
+			Console.WriteLine ("Global Printer: Bunny Received: {0}", b.Age);
+		}
+		
+		class X {
+			public void print (Bunny b) {
+				Console.WriteLine ("Bunny Received: {0}", b.Age);
+			}
 		}
 	}
 }

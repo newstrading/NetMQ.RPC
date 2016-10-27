@@ -43,7 +43,7 @@ namespace zmqRPC.PubSub
 					typehelper th;
 					if (dictTypes.TryGetValue (key, out th)) {
 					    	var o = JsonConvert.DeserializeObject(json,th.t);
-					    	th.methodInfo.Invoke (null, new object[]  {o} );
+					    	th.methodInfo.Invoke (th.target, new object[]  {o} );
 					}
 				}
 			}
@@ -60,6 +60,7 @@ namespace zmqRPC.PubSub
 		class typehelper {
 			public Type t;
 			public MethodInfo methodInfo;
+			public object target;
 		}
 		private Dictionary<Tuple<string,string>,typehelper> dictTypes = new Dictionary<Tuple<string,string>,typehelper> ();
 		
@@ -72,7 +73,8 @@ namespace zmqRPC.PubSub
 			if (!dictTypes.ContainsKey (key)) {
 				typehelper th = new typehelper ();
 				th.t = typeof(T);
-				th.methodInfo = onReceiveMessage.Method ;
+				th.methodInfo = onReceiveMessage.Method;
+				th.target = onReceiveMessage.Target;
 				dictTypes.Add (key,th );
 			}
 		}
