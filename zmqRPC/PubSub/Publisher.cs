@@ -16,6 +16,10 @@ namespace zmqRPC.PubSub
 			publisherSocket = new PublisherSocket (connectionStringPublisher);
 		}
 		
+		public void Stop () {
+			publisherSocket.Dispose();
+		}
+		
 		public void Publish<T>(string subscriptionName, T data )
         {
             try
