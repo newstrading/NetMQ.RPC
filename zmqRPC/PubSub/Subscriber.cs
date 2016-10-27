@@ -40,8 +40,9 @@ namespace zmqRPC.PubSub
 					string json = data[2];				
 					Console.WriteLine ( "{0} : {1}", subscriptionName, sType);
 					
+					Tuple<string,string> key = new Tuple<string,string> (subscriptionName, sType);	
 					typehelper th;
-					if (dictTypes.TryGetValue (sType, out th)) {
+					if (dictTypes.TryGetValue (key, out th)) {
 					    	var o = JsonConvert.DeserializeObject(json,th.t);
 					    	th.methodInfo.Invoke (null, new object[]  {o} );
 					}
@@ -61,20 +62,19 @@ namespace zmqRPC.PubSub
 			public Type t;
 			public MethodInfo methodInfo;
 		}
-		private Dictionary<string,typehelper> dictTypes = new Dictionary<string,typehelper> ();
+		private Dictionary<Tuple<string,string>,typehelper> dictTypes = new Dictionary<Tuple<string,string>,typehelper> ();
 		
 		public void Subscribe<T>(string subscriptionName, Action<T> onReceiveMessage)
         {
 			sub.Subscribe (subscriptionName);
-			
-			
-			
+	
 			string sType = typeof(T).ToString();
-			if (!dictTypes.ContainsKey (sType)) {
+			Tuple<string,string> key = new Tuple<string,string> (subscriptionName, sType);			
+			if (!dictTypes.ContainsKey (key)) {
 				typehelper th = new typehelper ();
 				th.t = typeof(T);
 				th.methodInfo = onReceiveMessage.Method ;
-				dictTypes.Add (sType,th );
+				dictTypes.Add (key,th );
 			}
 		}
 		
