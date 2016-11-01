@@ -18,7 +18,8 @@ namespace test
 			object o  =  JsonConvert.DeserializeObject(json,typeof(List<User>) );
 			Console.WriteLine ("Deserialized type: {0}", o.GetType() );
 			
-			var server = RpcFactory.CreateServer<ICalculator>(new Calculator (), "tcp://127.0.0.1:13777");
+			bool logMessages = true;
+			var server = RpcFactory.CreateServer<ICalculator>(new Calculator (), "tcp://127.0.0.1:13777", logMessages);
 			server.Start();
 			
 

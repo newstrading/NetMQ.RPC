@@ -56,9 +56,9 @@ namespace Burrow.RPC
         /// <param name="rabbitMqConnectionString"></param>
         /// <param name="serverId">will be used to determine whether the request queue is durable. It is also used as the subscription name when the server subscribe to request queue</param>
         /// <returns></returns>
-        public static IRpcServerCoordinator CreateServer<T>(T realImplementation, string connectionStringCommands) where T : class
+        public static IRpcServerCoordinator CreateServer<T>(T realImplementation, string connectionStringCommands, bool logMessages) where T : class
         {
-            return new BurrowRpcServerCoordinator<T>(realImplementation,  connectionStringCommands);
+            return new BurrowRpcServerCoordinator<T>(realImplementation,  connectionStringCommands, logMessages);
         }
 
 

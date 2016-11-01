@@ -15,9 +15,11 @@ namespace Burrow.RPC
     {
         private readonly T _realInstance;
         ResponseSocket server;
+        bool logMessages;
         
-        public BurrowRpcServerCoordinator(T realInstance, string connectionStringCommands)
+        public BurrowRpcServerCoordinator(T realInstance, string connectionStringCommands,  bool logMessages)
         {
+        	this.logMessages= logMessages;
             if (realInstance == null)
             {
                 throw new ArgumentNullException("realInstance");
@@ -56,7 +58,7 @@ namespace Burrow.RPC
         	while (running) {
 					// Receive the message from the server socket
 					string jsonRequest = server.ReceiveFrameString ();
-					Console.WriteLine ("Server Rcvd: {0}", jsonRequest);
+					if (logMessages) Console.WriteLine ("Server Rcvd: {0}", jsonRequest);
 
 					RpcRequest rpcRequest = JSON.DeSerializeRequest(  jsonRequest);
 					
@@ -66,7 +68,7 @@ namespace Burrow.RPC
         
         void SendResponse (RpcResponse rpcResponse) {        	
         	string jsonResponse = JsonConvert.SerializeObject(rpcResponse);
-            Console.WriteLine("Server Sending Response : {0}", jsonResponse);
+        	if (logMessages) Console.WriteLine("Server Send: {0}", jsonResponse);
 			server.SendFrame(jsonResponse);
         }
         
