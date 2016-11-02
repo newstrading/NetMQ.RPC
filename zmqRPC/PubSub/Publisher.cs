@@ -26,7 +26,7 @@ namespace zmqRPC.PubSub
             {
             	string json = JsonConvert.SerializeObject(data);
             	string datatype = typeof(T).ToString();
-            	Console.WriteLine ("Publishing {0}:{1}", subscriptionName, datatype);
+            	//Console.WriteLine ("Publishing {0}:{1}", subscriptionName, datatype);
             	publisherSocket
 					.SendMoreFrame(subscriptionName)
 					.SendMoreFrame(datatype)

@@ -47,9 +47,6 @@
     <Reference Include="Castle.Core">
       <HintPath>..\external\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
     <Reference Include="NetMQ">
       <HintPath>..\external\NetMQ.dll</HintPath>
     </Reference>
@@ -61,12 +58,10 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="NetMQrpc.sln" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\AsyncAttribute.cs" />
