@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="NetMQrpc.sln" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\AsyncAttribute.cs" />

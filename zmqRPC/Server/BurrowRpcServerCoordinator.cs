@@ -26,7 +26,12 @@ namespace Burrow.RPC
             }
             _realInstance = realInstance;
             server = new ResponseSocket(connectionStringCommands);
-      
+            
+            // fix timeout behind NAT
+			server.Options.TcpKeepalive = true;
+			server.Options.TcpKeepaliveInterval = new TimeSpan(0, 0, 55);
+			server.Options.TcpKeepaliveIdle = new TimeSpan(0, 0, 25);
+
         }
 
         private void Init()

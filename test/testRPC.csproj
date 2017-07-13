@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="NetMQrpc.sln" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\zmqRPC\zmqRPC.csproj">

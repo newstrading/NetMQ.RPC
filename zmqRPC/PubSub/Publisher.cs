@@ -14,6 +14,11 @@ namespace zmqRPC.PubSub
 		public Publisher(string connectionStringPublisher)
 		{
 			publisherSocket = new PublisherSocket (connectionStringPublisher);
+			
+			 // fix timeout behind NAT
+			publisherSocket.Options.TcpKeepalive = true;
+			publisherSocket.Options.TcpKeepaliveInterval = new TimeSpan(0, 0, 55);
+			publisherSocket.Options.TcpKeepaliveIdle = new TimeSpan(0, 0, 25);
 		}
 		
 		public void Stop () {
