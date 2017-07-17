@@ -26,9 +26,16 @@ namespace Burrow.RPC
         /// <param name="coordinator">an implementation of rpc client coordinator which can send requests to server</param>
         /// <param name="filters">custom filters to determine whether a method is valid/async for RPC call</param>
         /// <returns></returns>
-        public static T CreateClient<T>( string connectionStringCommands, params IMethodFilter[] filters) where T : class
+        
+        public static T CreateClient<T>( string connectionStringCommands,  params IMethodFilter[] filters) where T: class
         {
-            return CreateClient<T>(new RpcClientInterceptor( connectionStringCommands, filters));
+        	return  CreateClient<T>(  connectionStringCommands, null,   filters) ;
+        }        
+        
+        
+        public static T CreateClient<T>( string connectionStringCommands, logDelegate log, params IMethodFilter[] filters) where T : class
+        {
+            return CreateClient<T>(new RpcClientInterceptor( connectionStringCommands, log, filters));
         }
 
         internal static T CreateClient<T>(RpcClientInterceptor interceptor) where T : class

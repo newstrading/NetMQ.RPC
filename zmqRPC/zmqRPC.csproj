@@ -71,6 +71,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IMethodFilter.cs" />
     <Compile Include="InternalDependencies.cs" />
+    <Compile Include="Logging.cs" />
     <Compile Include="MessengingTypes\RpcRequest.cs" />
     <Compile Include="MessengingTypes\RpcResponse.cs" />
     <Compile Include="MethodMatcher.cs" />

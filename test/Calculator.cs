@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace test
 {
@@ -18,6 +19,10 @@ namespace test
 		
 		void ICalculator.SetProgrammers (List<User> programmers) {
 			return; 
+		}
+		
+		List<User> ICalculator.GoodProgrammers (List<User> all) {
+			return all.Where(p => p.Good).ToList();
 		}
 	}
 }

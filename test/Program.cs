@@ -23,7 +23,7 @@ namespace test
 			server.Start();
 			
 
-			var calculator = RpcFactory.CreateClient<ICalculator>(">tcp://127.0.0.1:13777");			
+			var calculator = RpcFactory.CreateClient<ICalculator>(">tcp://127.0.0.1:13777"); //, logClientMessage);
 			var result = calculator.Add (1,2);
 			Console.WriteLine ("Result is: {0}", result); 
 			
@@ -31,13 +31,22 @@ namespace test
 			var programmers = calculator.Programmers ();
 			Console.WriteLine ("Programmer Count: {0}", programmers.Count); 
 			
+			
+			var goodProgrammers = calculator.GoodProgrammers (programmers);
+			Console.WriteLine ("Good Programmer Count: {0}", goodProgrammers.Count); 
+			
+			
+			
 			calculator.SetProgrammers (programmers);
 			
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 			server.Stop();
 			Console.WriteLine ("Shutting Down..");
-			
+		}
+		
+		static void logClientMessage (Direction dir, string json) {
+			Console.WriteLine("{0}: {1}", dir, json);
 		}
 	}
 }

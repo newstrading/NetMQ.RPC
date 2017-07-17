@@ -15,10 +15,16 @@ namespace Burrow.RPC
         private readonly List<IMethodFilter> _methodFilters;
 
         RequestSocket client;
+		logDelegate log;
         
-        
-        public RpcClientInterceptor( string connectionStringCommands, params IMethodFilter[] methodFilters)
+		public RpcClientInterceptor( string connectionStringCommands,  params IMethodFilter[] methodFilters)
+			: this (connectionStringCommands, null, methodFilters)
         {
+		}
+		
+        public RpcClientInterceptor( string connectionStringCommands, logDelegate log, params IMethodFilter[] methodFilters)
+        {
+			this.log = log;
         	client = new RequestSocket (connectionStringCommands);  // connect	
 			
 
@@ -66,11 +72,13 @@ namespace Burrow.RPC
             }
 
             string jsonRequest = JsonConvert.SerializeObject(request);
-            Console.WriteLine("Client Sending Request: {0}", jsonRequest);
+            //Console.WriteLine("Client Sending Request: {0}", jsonRequest);
+			if (log != null) log(Direction.Sent, jsonRequest);
 			client.SendFrame(jsonRequest);
 
 			string jsonResponse = client.ReceiveFrameString();
-			Console.WriteLine("Client Response Received: {0}", jsonResponse);
+			if (log != null) log(Direction.Received, jsonResponse);
+			//Console.WriteLine("Client Response Received: {0}", jsonResponse);
 			
 			
 			RpcResponse response =  JSON.DeserializeResponse (request, jsonResponse); //     JsonConvert.DeserializeObject<RpcResponse>(jsonResponse);
