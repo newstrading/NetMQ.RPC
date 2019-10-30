@@ -37,7 +37,7 @@ namespace zmqRPC.PubSub
 					string subscriptionName = data[0];
 					string sType = data[1];
 					string json = data[2];				
-					Console.WriteLine ( "{0} : {1}", subscriptionName, sType);
+					//Console.WriteLine ( "{0} : {1}", subscriptionName, sType);
 					
 					Tuple<string,string> key = new Tuple<string,string> (subscriptionName, sType);	
 					typehelper th;
